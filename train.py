@@ -19,7 +19,7 @@ BATCH_SIZE = 100
 LEARNING_RATE = 2e-4
 OPTIM_BETAS = (0.5, 0.999)
 
-NOISE = 100
+NOISE = 300
 
 MODEL_PATH = 'model'
 MODEL_D = 'D.pth'
@@ -40,7 +40,7 @@ transform = transforms.Compose([
 
 to_pil_image = transforms.ToPILImage()
 
-# mnist train_dataset
+# cifar100 train_dataset
 train_dataset = torchvision.datasets.CIFAR100(root=WORK_DIR,
                                               download=True,
                                               train=True,
@@ -124,7 +124,7 @@ def main():
                   f"D(x): {real_score:.4f}, "
                   f"D(G(z)): {fake_score_z1:.4f} / {fake_score_z2:.4f}.")
 
-            if step % 100 == 0:
+            if step % 1000 == 0:
                 images = images.reshape(images.size(0), 3, 32, 32)
                 save_image(images, WORK_DIR + '/' + 'gen' + '/' + 'real' + '.jpg')
                 fake_images = fake.reshape(fake.size(0), 3, 32, 32)
