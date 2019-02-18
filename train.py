@@ -124,7 +124,7 @@ def main():
                   f"D(x): {real_score:.4f}, "
                   f"D(G(z)): {fake_score_z1:.4f} / {fake_score_z2:.4f}.")
 
-            if step % 1000 == 0:
+            if step % 200 == 0:
                 images = images.reshape(images.size(0), 3, 32, 32)
                 save_image(images, WORK_DIR + '/' + 'gen' + '/' + 'real' + '.jpg')
                 fake_images = fake.reshape(fake.size(0), 3, 32, 32)
